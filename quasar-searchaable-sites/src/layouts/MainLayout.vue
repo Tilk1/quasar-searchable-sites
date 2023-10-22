@@ -12,10 +12,17 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Searchable sites
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+            <!-- Botón de modo oscuro -->
+        <q-btn
+          flat
+          dense
+          round
+          icon="dark_mode"
+          aria-label="Toggle Dark Mode"
+          @click="toggleDarkMode"
+        />
       </q-toolbar>
     </q-header>
 
@@ -28,7 +35,7 @@
         <q-item-label
           header
         >
-          Essential Links
+          Panel de navegación
         </q-item-label>
 
         <EssentialLink
@@ -46,30 +53,32 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { defineComponent, ref } from 'vue';
+import { useQuasar } from 'quasar'; // Importa useQuasar desde Quasar
+import EssentialLink from 'components/EssentialLink.vue'; // Asegúrate de importar EssentialLink correctamente
 
 const linksList = [
   {
+    title: 'Inicio',
+    icon: 'home',
+    link: '/'
+  },
+  {
     title: 'Iniciar sesion',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    icon: 'login',
+    link: '/#/login'
   },
   {
     title: 'Agregar sitio',
-    caption: 'quasar.dev',
     icon: 'add_circle_outline',
-    link: 'https://quasar.dev'
+    link: '/#/sites/add'
   },
   {
     title: 'Mis sitios',
-    caption: 'github.com/quasarframework',
     icon: 'code',
-    link: '/sites/'
+    link: '/#/sites'
   },
-
-]
+];
 
 export default defineComponent({
   name: 'MainLayout',
@@ -79,15 +88,25 @@ export default defineComponent({
   },
 
   setup () {
-    const leftDrawerOpen = ref(false)
+    const $q = useQuasar(); // Accede a Quasar
+
+    const leftDrawerOpen = ref(false);
+
+    const toggleLeftDrawer = () => {
+      leftDrawerOpen.value = !leftDrawerOpen.value;
+    };
+
+    const toggleDarkMode = () => {
+      $q.dark.toggle(); // Toggle del modo oscuro
+    };
 
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
+      toggleLeftDrawer,
+      toggleDarkMode // Agrega la función de cambio de modo oscuro
+    };
   }
-})
+});
 </script>
+

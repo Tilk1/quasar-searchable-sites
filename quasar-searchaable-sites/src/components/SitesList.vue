@@ -26,7 +26,7 @@ onBeforeMount(() => {
 
 <template>
   <q-page>
-    <q-container>
+
       <q-list bordered>
         <q-item
           v-for="site in sites"
@@ -45,7 +45,7 @@ onBeforeMount(() => {
           </q-item-section>
         </q-item>
       </q-list>
-    </q-container>
+
   </q-page>
 </template>
 
