@@ -31,7 +31,7 @@ class SiteService{
 
     delete(id){
         return new Promise((resolve,reject) => {
-            this.service.delete('/sites/${id}').then(res => {
+            this.service.delete(`/sitios/${id}`).then(res => {
                 resolve(res.data)
             })
             .catch(err => {
@@ -40,9 +40,10 @@ class SiteService{
         })
     }
 
+
     create(payload){
         return new Promise((resolve,reject) => {
-            this.service.post('/sites',payload).then(res => {
+            this.service.post('/sitios',payload).then(res => {
                 resolve(res.data)
             })
             .catch(err => {

@@ -13,6 +13,9 @@
         <q-item-section side>
           <q-btn icon="settings" @click="navigateToDetail(site.Id)" />
         </q-item-section>
+        <q-item-section side>
+        <q-btn icon="delete" @click="eliminar(site.Id)" />
+      </q-item-section>
       </q-item>
     </q-list>
   </q-page>
@@ -32,4 +35,15 @@
   onBeforeMount(() => {
     setSites();
   })
+
+  function navigateToDetail(id) {
+    this.$router.push({ name: 'SiteForm', params: { id: id } })
+  }
+
+  function eliminar(id) {
+    SiteService.delete(id).then(result => {
+      setSites();
+    })
+  }
+
   </script>
