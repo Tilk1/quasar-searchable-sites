@@ -14,36 +14,36 @@
           <q-btn icon="settings" @click="navigateToDetail(site.Id)" />
         </q-item-section>
         <q-item-section side>
-        <q-btn icon="delete" @click="eliminar(site.Id)" />
-      </q-item-section>
+          <q-btn icon="delete" @click="eliminar(site.Id)" />
+        </q-item-section>
       </q-item>
     </q-list>
   </q-page>
 </template>
 
-  <script setup>
-  import { ref } from 'vue'
-  import { onBeforeMount } from 'vue';
-  import SiteService from "../services/SiteService.js"
+<script setup>
+import { ref } from 'vue'
+import { onBeforeMount } from 'vue';
+import SiteService from "../services/SiteService.js"
 
-  const sites = ref([]);
+const sites = ref([]);
 
-  function setSites() {
-    SiteService.getsites().then(result => {sites.value = result})
-  }
+function setSites() {
+  SiteService.getsites().then(result => { sites.value = result })
+}
 
-  onBeforeMount(() => {
+onBeforeMount(() => {
+  setSites();
+})
+
+function navigateToDetail(id) {
+  this.$router.push({ name: 'SiteForm', params: { id: id } })
+}
+
+function eliminar(id) {
+  SiteService.delete(id).then(result => {
     setSites();
   })
+}
 
-  function navigateToDetail(id) {
-    this.$router.push({ name: 'SiteForm', params: { id: id } })
-  }
-
-  function eliminar(id) {
-    SiteService.delete(id).then(result => {
-      setSites();
-    })
-  }
-
-  </script>
+</script>
