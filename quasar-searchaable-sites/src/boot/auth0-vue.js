@@ -5,7 +5,7 @@ const auth0 = createAuth0({
   domain: "dev-773yov6wmoip81dg.us.auth0.com",//import.meta.env.VITE_AUTH0_DOMAIN,
   clientId: "TIxHPjUVxfNssqZO9HwgyOn1GZ26OVAw",//import.meta.env.VITE_AUTH0_CLIENT_ID,
   authorizationParams: {
-    redirect_uri: "http://localhost:9000"//import.meta.env.VITE_AUTH0_CALLBACK_URL,
+    redirect_uri: window.location.origin //import.meta.env.VITE_AUTH0_CALLBACK_URL,
     },
 });
 

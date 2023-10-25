@@ -52,11 +52,11 @@ const linksList = [
     icon: 'home',
     link: '/#/'
   },
-  {
-    title: 'Iniciar sesion',
-    icon: 'login',
-    link: '/#/login'
-  },
+  // {
+  //   title: 'Iniciar sesion',
+  //   icon: 'login',
+  //   link: '/#/login'
+  // },
   {
     title: 'Agregar sitio',
     icon: 'add_circle_outline',
