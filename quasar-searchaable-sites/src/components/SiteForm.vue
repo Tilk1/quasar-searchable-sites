@@ -31,6 +31,9 @@
 import { basicRules, advancedRules } from '../utils/validationRules.js';
 import SiteService from "../services/SiteService.js"
 import { ref } from 'vue'
+const props = defineProps({
+  site: String
+});
 
 //basico
 const name = ref('')
