@@ -2,10 +2,12 @@
   <router-view />
 </template>
 
-<script>
+<script setup>
 import { defineComponent } from 'vue'
 
-export default defineComponent({
+defineComponent({
   name: 'App'
 })
+
+
 </script>
