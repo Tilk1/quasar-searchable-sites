@@ -7,6 +7,7 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: '/sites', component: () => import('pages/SitesPage.vue') },
       { path: '/sites/add', component: () => import('pages/SiteAddPage.vue') },
+      { path: '/sites/edit/:id',name: 'edit', component: () => import('pages/SiteEditPage.vue') },
       { path: '/login', component: () => import('pages/loginPage.vue') },
     ]
   },

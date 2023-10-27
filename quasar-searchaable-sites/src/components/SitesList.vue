@@ -11,7 +11,9 @@
           {{ site.nombre }}
         </q-item-section>
         <q-item-section side>
+          <router-view>
           <q-btn icon="settings" @click="navigateToDetail(site.Id)" />
+          </router-view>
         </q-item-section>
         <q-item-section side>
           <q-btn icon="delete" @click="eliminar(site.Id)" />
@@ -25,6 +27,8 @@
 import { ref } from 'vue'
 import { onBeforeMount } from 'vue';
 import SiteService from "../services/SiteService.js"
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const sites = ref([]);
 
@@ -37,8 +41,9 @@ onBeforeMount(() => {
 })
 
 function navigateToDetail(id) {
-  this.$router.push({ name: 'SiteForm', params: { id: id } })
+  router.push('/sites/edit/' + id);
 }
+
 
 function eliminar(id) {
   SiteService.delete(id).then(result => {
